@@ -1,53 +1,29 @@
 <!DOCTYPE html>
 <html>
-   <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infomation</title>
+    <title>Organ Donation Information</title>
     <link rel="stylesheet" href="index.css">
-    </head>
+</head>
+<body>
     <div class="container">
         <header class="header">
-            <h1>Organ Donation</h1>Enter Organ Details Below</h2>
-      <title> </title>
-   </head>
-   <body>
-    </section>
-    <input type="text" id="Organ Type" name="Organ Type" placeholder="Liver">
-    </section>
-    </section>
-    <input type="text" id="Blood Type" name="Blood Type" placeholder="A-">
-    </section>
-    </section>  
-    <input type="text" id="Conditon of Organ" name="Conditon of Organ" placeholder="Good">
-    </section>
-    <input type="text" id="Hospital" name="Hospital" placeholder="ECMC">
-    </section> 
-
-  
-
-
-
-
-
-                <label for="Name">Name:</label>
-                
-               
-                
-                <input type="text" id="Hospital" name="Hospital" placeholder="ECMC">
-                <label for="freeform"></label>
-        <br>
-        
-        <textarea id="freeform" name="freeform" rows="4" cols="50">
-        Additional Information...
-        </textarea>
-  
-    
-    </style>
-
-   </body>
-<button id="donateButton">Donate</button>
-
-
+            <h1>Organ Donation</h1>
+        </header>
+        <a href="index.html">
+            <button> Back </button>
+        </a>
+        <form id="organDonationForm">
+            <input type="text" id="organType" placeholder="Organ Type (e.g., Liver)">
+            <input type="text" id="bloodType" placeholder="Blood Type (e.g., A-)">
+            <input type="text" id="organCondition" placeholder="Condition of Organ (e.g., Good)">
+            <input type="text" id="hospital" placeholder="Hospital Name (e.g., ECMC)">
+            <textarea id="additionalInfo" placeholder="Additional Information..." rows="4" cols="50"></textarea>
+            <button type="submit">Donate Organ</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>
+    <script src="app.js"></script>
+</body>
 </html>
-
