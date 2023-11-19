@@ -1,11 +1,11 @@
 :root {
-    --primary-color: #8B0000; /* Deep red for primary elements */
-    --secondary-color: #4F4F4F; /* Dark grey for secondary elements */
-    --background-color: #838282; /* Very light grey for a clean background */
-    --text-color: #333; /* Dark color for text */
-    --card-background: #FFFFFF; /* White for card backgrounds */
-    --border-color: #D3D3D3; /* Light grey for borders */
-    --button-hover-color: #6A0D0D; /* Darker red for button hover */
+    --primary-color: #8B0000; 
+    --secondary-color: #4F4F4F; 
+    --background-color: #838282; 
+    --text-color: #333;
+    --card-background: #FFFFFF; 
+    --border-color: #D3D3D3; 
+    --button-hover-color: #6A0D0D;
 }
 
 * {

@@ -39,7 +39,7 @@ body {
     background: var(--card-background);
     border-radius: 10px;
     padding: 25px;
-    margin-top: 20px; /* Space between header and card */
+    margin-top: 20px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -52,10 +52,9 @@ button {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    display: block; /* To ensure it occupies its own line */
-    margin-top: 20px; /* Space above the button */
+    display: block; 
+    margin-top: 20px; 
 }
-
 button:hover {
     background-color: var(--button-hover-color);
 }

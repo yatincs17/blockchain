@@ -11,7 +11,6 @@ window.addEventListener('load', async () => {
         console.log('try metamask');
     }
 
-    // Donation button event listener
     document.getElementById('donateButton').addEventListener('click', async () => {
         console.log("Donate button clicked");
         const amount = document.getElementById('donationAmount').value;
@@ -22,7 +21,6 @@ window.addEventListener('load', async () => {
         await sendDonation(amount);
     });
 
-// Function to send donation
 async function sendDonation(amount) {
     const contractAddress = '0x86F50902b5326cE7eA71EE01316F2ec2efb9c9B8';
     const accounts = await web3.eth.getAccounts();
