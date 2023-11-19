@@ -3,30 +3,27 @@ window.addEventListener('load', async () => {
         window.web3 = new Web3(ethereum);
         try {
             await ethereum.request({ method: 'eth_requestAccounts' });
-            console.log("metamask connected");
+            console.log("MetaMask connected");
         } catch (error) {
-            console.error("error", error);
+            console.error("Error:", error);
         }
     } else {
-        console.log('try metamask');
+        console.log('Please try using MetaMask');
     }
 
-document.getElementById('organDonationForm').addEventListener('submit', async (event) => {
-    event.preventDefault();
-    console.log("Donate Organ form submitted");
-
-    const organName = document.getElementById('organType').value;
-    const organCondition = document.getElementById('organCondition').value;
-    const bloodGroup = document.getElementById('bloodGroup').value;
-    const hospitalName = document.getElementById('hospitalName').value;
-    const description = document.getElementById('description').value;
-    const donorID = document.getElementById('donorID').value
-
-
-    await mintOrganToken(organName, organCondition, bloodGroup, hospitalName, description, donorID);
+    document.getElementById('sendTokenButton').addEventListener('click', sendTokenToDonor);
 });
-async function mintOrganToken(organName, organCondition, bloodGroup, hospitalName, description, donorID) {
-    const contractAddress = '0xb01d2a4afc6DBdd6A9f21a2146781a3fAF43380f';
+
+async function sendTokenToDonor() {
+    const donorAddress = document.getElementById('donorAddress').value;
+    const tokenAmount = document.getElementById('tokenAmount').value;
+
+    if (!donorAddress || !tokenAmount) {
+        alert('enter donor address AND token amount.');
+        return;
+    }
+
+    const contractAddress = '0x29DB98795E9E41B364736FD274b1Ef619227d949';
     const contractABI = [
         {
             "inputs": [],
@@ -254,44 +251,6 @@ async function mintOrganToken(organName, organCondition, bloodGroup, hospitalNam
             "type": "event"
         },
         {
-            "anonymous": false,
-            "inputs": [
-                {
-                    "indexed": true,
-                    "internalType": "address",
-                    "name": "donor",
-                    "type": "address"
-                },
-                {
-                    "indexed": false,
-                    "internalType": "uint256",
-                    "name": "amount",
-                    "type": "uint256"
-                }
-            ],
-            "name": "incomingDonation",
-            "type": "event"
-        },
-        {
-            "anonymous": false,
-            "inputs": [
-                {
-                    "indexed": true,
-                    "internalType": "address",
-                    "name": "recipient",
-                    "type": "address"
-                },
-                {
-                    "indexed": false,
-                    "internalType": "uint256",
-                    "name": "amount",
-                    "type": "uint256"
-                }
-            ],
-            "name": "transferDonation",
-            "type": "event"
-        },
-        {
             "inputs": [
                 {
                     "internalType": "address",
@@ -340,28 +299,19 @@ async function mintOrganToken(organName, organCondition, bloodGroup, hospitalNam
             "type": "function"
         },
         {
-            "inputs": [],
-            "name": "checkDonationPoolBalance",
-            "outputs": [
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "account",
+                    "type": "address"
+                },
                 {
                     "internalType": "uint256",
-                    "name": "",
+                    "name": "tokenId",
                     "type": "uint256"
                 }
             ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "name": "donate",
-            "outputs": [],
-            "stateMutability": "payable",
-            "type": "function"
-        },
-        {
-            "inputs": [],
-            "name": "donationPool",
+            "name": "checkTokenBalance",
             "outputs": [
                 {
                     "internalType": "uint256",
@@ -394,44 +344,6 @@ async function mintOrganToken(organName, organCondition, bloodGroup, hospitalNam
                 }
             ],
             "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "string",
-                    "name": "organName",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "organCondition",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "bloodGroup",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "hospitalName",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "description",
-                    "type": "string"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "donorID",
-                    "type": "uint256"
-                }
-            ],
-            "name": "mintOrganToken",
-            "outputs": [],
-            "stateMutability": "nonpayable",
             "type": "function"
         },
         {
@@ -517,6 +429,24 @@ async function mintOrganToken(organName, organCondition, bloodGroup, hospitalNam
             "inputs": [
                 {
                     "internalType": "address",
+                    "name": "donor",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "sendTokenToDonor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
                     "name": "operator",
                     "type": "address"
                 },
@@ -558,50 +488,6 @@ async function mintOrganToken(organName, organCondition, bloodGroup, hospitalNam
                     "type": "uint256"
                 }
             ],
-            "name": "theOrgans",
-            "outputs": [
-                {
-                    "internalType": "string",
-                    "name": "organName",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "organCondition",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "bloodGroup",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "hospitalName",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "description",
-                    "type": "string"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "donorID",
-                    "type": "uint256"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
             "name": "uri",
             "outputs": [
                 {
@@ -612,21 +498,17 @@ async function mintOrganToken(organName, organCondition, bloodGroup, hospitalNam
             ],
             "stateMutability": "view",
             "type": "function"
-        },
-        {
-            "stateMutability": "payable",
-            "type": "receive"
         }
-    ]
+    ];
     const contract = new web3.eth.Contract(contractABI, contractAddress);
     const accounts = await web3.eth.getAccounts();
 
-    contract.methods.mintOrganToken(organName, organCondition, bloodGroup, hospitalName, description, donorID)
-    .send({ from: accounts[0] })
-    .then(receipt => {
-        console.log('nft minted: ', receipt);
-        alert("NFT Successfully Minted")
-    }).catch(error => {
-        console.error('Error:', error);
-    });
-}})
+    contract.methods.sendTokenToDonor(donorAddress, tokenAmount)
+        .send({ from: accounts[0] })
+        .then(receipt => {
+            console.log('appreciation token sent:', receipt);
+            alert("appreciation Token Sent");
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+}

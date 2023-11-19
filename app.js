@@ -22,13 +22,14 @@ window.addEventListener('load', async () => {
     });
 
 async function sendDonation(amount) {
-    const contractAddress = '0x86F50902b5326cE7eA71EE01316F2ec2efb9c9B8';
+    const contractAddress = '0xb01d2a4afc6DBdd6A9f21a2146781a3fAF43380f';
     const accounts = await web3.eth.getAccounts();
     const amountInWei = web3.utils.toWei(amount, 'ether');
 
     web3.eth.sendTransaction({ from: accounts[0], to: contractAddress, value: amountInWei
     }).then(receipt => {
         console.log('transaction successful: ', receipt);
+        alert("Donation to hospital was successful. We appreciate your donation!")
     }).catch(error => {
         console.error('error:', error);
     });
