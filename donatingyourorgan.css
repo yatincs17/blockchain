@@ -1,0 +1,61 @@
+:root {
+    --primary-color: #8B0000; 
+    --card-background: #FFFFFF; 
+    --button-hover-color: #6A0D0D; 
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #838282; 
+    color: #333; 
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+}
+
+.card {
+    max-width: 800px;
+    background: var(--card-background);
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 20px; /* Space between header and card */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block; /* To ensure it occupies its own line */
+    margin-top: 20px; /* Space above the button */
+}
+
+button:hover {
+    background-color: var(--button-hover-color);
+}
