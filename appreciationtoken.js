@@ -23,7 +23,7 @@ async function sendTokenToDonor() {
         return;
     }
 
-    const contractAddress = '0x29DB98795E9E41B364736FD274b1Ef619227d949';
+    const contractAddress = '0x6B65fA135c849edcbc37d3bE1E80FE5e3F46fFf9';
     const contractABI = [
         {
             "inputs": [],

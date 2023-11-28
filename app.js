@@ -22,7 +22,7 @@ window.addEventListener('load', async () => {
     });
 
 async function sendDonation(amount) {
-    const contractAddress = '0xb01d2a4afc6DBdd6A9f21a2146781a3fAF43380f';
+    const contractAddress = '0x6B65fA135c849edcbc37d3bE1E80FE5e3F46fFf9';
     const accounts = await web3.eth.getAccounts();
     const amountInWei = web3.utils.toWei(amount, 'ether');
 

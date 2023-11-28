@@ -26,7 +26,7 @@ document.getElementById('organDonationForm').addEventListener('submit', async (e
     await mintOrganToken(organName, organCondition, bloodGroup, hospitalName, description, donorID);
 });
 async function mintOrganToken(organName, organCondition, bloodGroup, hospitalName, description, donorID) {
-    const contractAddress = '0xb01d2a4afc6DBdd6A9f21a2146781a3fAF43380f';
+    const contractAddress = '0x6B65fA135c849edcbc37d3bE1E80FE5e3F46fFf9';
     const contractABI = [
         {
             "inputs": [],
